@@ -241,9 +241,11 @@
     <Content Include="Views\Restaurants\Details.cshtml" />
     <Content Include="Views\Restaurants\NotFound.cshtml" />
     <Content Include="Views\Restaurants\Create.cshtml" />
+    <Content Include="Views\Restaurants\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="NewFolder2\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

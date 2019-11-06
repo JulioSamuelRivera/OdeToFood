@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -7,7 +8,7 @@ using OdeToFood.Data.Models;
 
 namespace OdeToFood.Data.Services
 {
-    class SqlRestaurantData : IRestaurantData
+    public class SqlRestaurantData : IRestaurantData
     {
         private readonly OdeToFoodDbContext db;
 
@@ -23,17 +24,21 @@ namespace OdeToFood.Data.Services
 
         public Restaurant Get(int id)
         {
-            throw new NotImplementedException();
+            return db.Restaurants.FirstOrDefault(r => r.RestaurantId == id);
         }
 
         public IEnumerable<Restaurant> GetAll()
         {
-            throw new NotImplementedException();
+            return from r in db.Restaurants
+                   orderby r.Name
+                   select r;
         }
 
         public void Update(Restaurant restaurant)
         {
-            throw new NotImplementedException();
+            var entry = db.Entry(restaurant);
+            entry.State = EntityState.Modified;
+            db.SaveChanges();
         }
     }
 }
